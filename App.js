@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom/client";
 
 
 const Header=()=>{
@@ -26,20 +27,27 @@ const Header=()=>{
 const RestaurantCard = (props) => {
 
     const {resData} = props;
-  
-    
 
-   return(
+    const{cloudinaryImageId,
+      name,
+      cuisines,
+      avgRatingString,
+      costForTwo
+    }= resData?.info;
+  
+     const {deliveryTime}= resData.info.sla;
+     
+    return(
         <div className='res-card' style={{backgroundColor:"#f0f0f0"}}>
             <img className="res-logo" 
             alt="res-logo" 
-            src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.info.cloudinaryImageId}
+            src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}
             />
-            <h3>{resData.info.name}</h3>
-            <h4>{resData.info.cuisines.join(",")}</h4>
-            <h4>{resData.info.avgRatingString} stars</h4>
-            <h4>{resData.info.costForTwo}  </h4>
-            <h4>{resData.info.sla.deliveryTime} minutes</h4>
+            <h3>{name}</h3>
+            <h4>{cuisines.join(",")}</h4>
+            <h4>{avgRatingString} stars</h4>
+            <h4>{costForTwo}  </h4>
+            <h4>{deliveryTime} minutes</h4>
             
         </div>
     );
@@ -2296,17 +2304,16 @@ return(
         <div className='search'>Search</div>
         <div className="res-container">
              {/* Restaurant Card Component */}
-            <RestaurantCard resData={resList[0]} />
+            {/* <RestaurantCard resData={resList[0]} />
             <RestaurantCard resData={resList[1]} />
-            <RestaurantCard resData={resList[2]} />
-            <RestaurantCard resData={resList[3]} />
-            <RestaurantCard resData={resList[4]} />
-            <RestaurantCard resData={resList[5]} />
-            <RestaurantCard resData={resList[6]} />
-            <RestaurantCard resData={resList[7]} />
-            <RestaurantCard resData={resList[8]} />
-            <RestaurantCard resData={resList[9]} />
-            {/* <RestaurantCard
+            -------
+            <RestaurantCard resData={resList[9]} /> */}
+
+         {
+          resList.map((restaurant)=> ( <RestaurantCard key={restaurant.info.id} resData={restaurant}/>))
+         }
+
+         {/* <RestaurantCard
                 resName="KFC"
                 cuisine="Burger,Fast-Food"
             /> */}
