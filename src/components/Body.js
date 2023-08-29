@@ -1,10 +1,13 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
+import { useState } from "react";
 
 
 const Body = () => {
 
-let listOfRestaurants=[
+
+//normal js variable    
+let listOfRestaurantsJS=[
     {
         "info": {
           "id": "54604",
@@ -70,15 +73,83 @@ let listOfRestaurants=[
     }
 ]
 
+//Local State variable - super powerful variable
+const [listOfRestaurants, setListOfRestaurants]=useState([ {
+    "info": {
+      "id": "54604",
+      "name": "Domino's Pizza",
+      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
+      "locality": "Eternity Mall",
+      "areaName": "Sitabuldi",
+      "costForTwo": "₹400 for two",
+      "cuisines": [
+        "Pizzas",
+        "Italian",
+        "Pastas",
+        "Desserts"
+      ],
+      "avgRating": 4.3,
+      "sla": {
+        "deliveryTime": 27,
+        
+      },
+  },
+},
+{
+    "info": {
+      "id": "54605",
+      "name": "KFC",
+      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
+      "locality": "Eternity Mall",
+      "areaName": "Sitabuldi",
+      "costForTwo": "₹400 for two",
+      "cuisines": [
+        "Pizzas",
+        "Italian",
+        "Pastas",
+        "Desserts"
+      ],
+      "avgRating": 4.5,
+      "sla": {
+        "deliveryTime": 27,
+        
+      },
+  },
+},
+{
+    "info": {
+      "id": "54606",
+      "name": "MCD",
+      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
+      "locality": "Eternity Mall",
+      "areaName": "Sitabuldi",
+      "costForTwo": "₹400 for two",
+      "cuisines": [
+        "Pizzas",
+        "Italian",
+        "Pastas",
+        "Desserts"
+      ],
+      "avgRating": 3.8,
+      "sla": {
+        "deliveryTime": 27,
+        
+      },
+  },
+}]);
+
     return(
         <div className='body'>
             <div className='filter'>
                 <button className="filter-btn"
                 onClick={()=>{
                     //console.log("button clicked")
+
                     //Filter logic here
-                    listOfRestaurants = listOfRestaurants.filter((res) => res.info.avgRating > 4);
-                    console.log(listOfRestaurants);
+                    const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4);
+                    console.log(filteredList);
+
+                    setListOfRestaurants(filteredList);
                 }}
                 >
                 Top Rated Restaurants
