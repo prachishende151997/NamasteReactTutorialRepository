@@ -1,5 +1,4 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import { useState ,useEffect} from "react";
 
 
@@ -74,7 +73,7 @@ let listOfRestaurantsJS=[
 ]
 
 //Local State variable - super powerful variable
-const [listOfRestaurants, setListOfRestaurants]=useState(resList);
+const [listOfRestaurants, setListOfRestaurants]=useState([]);
 
 useEffect(
   ()=>
@@ -88,6 +87,7 @@ useEffect(
   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.131137&lng=79.106856&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
   const json = await data.json();
+  setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   console.log(json);
  }
 
