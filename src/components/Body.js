@@ -74,69 +74,7 @@ let listOfRestaurantsJS=[
 ]
 
 //Local State variable - super powerful variable
-const [listOfRestaurants, setListOfRestaurants]=useState([ {
-    "info": {
-      "id": "54604",
-      "name": "Domino's Pizza",
-      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
-      "locality": "Eternity Mall",
-      "areaName": "Sitabuldi",
-      "costForTwo": "₹400 for two",
-      "cuisines": [
-        "Pizzas",
-        "Italian",
-        "Pastas",
-        "Desserts"
-      ],
-      "avgRating": 4.3,
-      "sla": {
-        "deliveryTime": 27,
-        
-      },
-  },
-},
-{
-    "info": {
-      "id": "54605",
-      "name": "KFC",
-      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
-      "locality": "Eternity Mall",
-      "areaName": "Sitabuldi",
-      "costForTwo": "₹400 for two",
-      "cuisines": [
-        "Pizzas",
-        "Italian",
-        "Pastas",
-        "Desserts"
-      ],
-      "avgRating": 4.5,
-      "sla": {
-        "deliveryTime": 27,
-        
-      },
-  },
-},
-{
-    "info": {
-      "id": "54606",
-      "name": "MCD",
-      "cloudinaryImageId": "dp3bbhabqbzpi9lk05la",
-      "locality": "Eternity Mall",
-      "areaName": "Sitabuldi",
-      "costForTwo": "₹400 for two",
-      "cuisines": [
-        "Pizzas",
-        "Italian",
-        "Pastas",
-        "Desserts"
-      ],
-      "avgRating": 3.8,
-      "sla": {
-        "deliveryTime": 27,
-        
-      },
-  },
-}]);
+const [listOfRestaurants, setListOfRestaurants]=useState(resList);
 
     return(
         <div className='body'>
