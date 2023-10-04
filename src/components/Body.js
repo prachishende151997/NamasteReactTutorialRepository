@@ -21,17 +21,21 @@ useEffect(
 
   const json = await data.json();
 
+  console.log(json);
+
   setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-  console.log(json);
- }
-
-if(listOfRestaurants.length===0){
-  return <Shimmer/>
 }
 
+ //Conditional Rendering
+// if(listOfRestaurants.length===0){
+//   return <Shimmer/>
+// }
 
-    return(
+
+    return listOfRestaurants.length===0 ? (
+         <Shimmer/>
+         ) :  (
         <div className='body'>
             <div className='filter'>
                 <button className="filter-btn"
