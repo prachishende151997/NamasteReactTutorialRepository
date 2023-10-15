@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class UserClass extends React.Component{
 
 constructor(props){
@@ -12,13 +11,22 @@ constructor(props){
       count:0,
       count2:1,
     };
+console.log(this.props.name + " child CONSTRUCTOR CALLED")
+}
+
+componentDidMount(){
+  console.log(this.props.name +"component did mount from child component called")
+  //api call we need to make here
+
 
 }
 
-  render(){
+render(){
 
     const{name,location}=this.props;
     const{count,count2}=this.state
+
+    console.log(this.props.name + "child render called")
 
     return(
         <div className='user-card'>
