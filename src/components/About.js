@@ -21,9 +21,9 @@ componentDidMount(){
             <div>
                 <h1>About us page</h1>
                 <h1>About class component</h1>
-                <User name={'Prachi Shende (functional component props)'}/>
+                {/* <User name={'Prachi Shende (functional component props)'}/> */}
                 <UserClass  name={'Prachi Shende (Class component props)' } location={"Nagpur class based component"} />
-                <UserClass  name={'prangha (Class component props)' } location={"Nagpur class based component"} />
+               
             </div>
         )
     }
