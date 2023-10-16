@@ -8,7 +8,7 @@ const useRestaurantMenu = (resId) => {
  //will fetchdata using useeffect hook  and will return information 
   useEffect(()=>{
     fetchData();
-  },[])
+  },[]);
 
   const fetchData = async()=>{
     const data = await fetch(MENU_API+resId);
