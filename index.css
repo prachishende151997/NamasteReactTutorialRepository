@@ -1,10 +1,17 @@
-.header{
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* .header{
     display:flex;
     justify-content: space-between;
     border: 1px solid black;
-}
+} */
 
-.logo{
+/* .logo{
     width: 200px;
 }
 
@@ -45,11 +52,11 @@ margin:10px;
 
 .search {
     padding: 10px;
-}
+} */
 
-.res-logo {
+/* .res-logo {
     width: 100%;
-    /* width: 100px; */
+    width: 100px; 
 }
 
 .filter-btn{
@@ -83,4 +90,4 @@ background-color: #f0f0f0;
 .user-card{
     padding: 10px;
     border :1px solid black;
-}
+} */
