@@ -30,4 +30,18 @@ const RestaurantCard = (props) => {
     );
 }
 
+//Higher order component - which will take existing restaurant Card component enhnaces it  i.e. lable restaurantcard
+//input - restaurantCard => RetaurantCardPromoted
+
+export const withPromotedLabel=(RestaurantCard)=>{
+    return(props)=>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted/IsOpen</label>
+               <RestaurantCard {...props}/> 
+            </div>
+        );
+    };
+};
+
 export default RestaurantCard;

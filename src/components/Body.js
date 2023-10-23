@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard ,{withPromotedLabel} from "./RestaurantCard";
 import { useState ,useEffect} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 
 const Body = () => {
@@ -13,6 +14,10 @@ const [filteredRestaurant , setFilteredRestaurant] = useState([]);
 
 //serchTextBox
 const [searchText,setSearchText]= useState("");
+
+const RestaurantCardPromoted= withPromotedLabel(RestaurantCard);
+
+console.log("Body Rendered" , listOfRestaurants);
 
 useEffect(
   ()=>
@@ -110,7 +115,14 @@ return<h1>No internet , please check your internet connection </h1>
               key={restaurant.info.id} 
                to={"/restaurants/"+ restaurant.info.id}
               >
-              <RestaurantCard  resData={restaurant}/></Link>
+                {/* If restaurant is promoted(or isOpen) then add open or promoted label to it */}
+                { restaurant.info.isOpen ? (
+                     <RestaurantCardPromoted resData={restaurant}/> )
+                     : (
+                     <RestaurantCard  resData={restaurant}/>
+                     )
+                }
+              </Link>
               ))
              }
     
