@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
 
@@ -19,27 +20,57 @@ const RestaurantMenu = () => {
     
    const{itemCards}= resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
    console.log(itemCards)
+   console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+   const categories  = 
+   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+       c.card?.["card"]?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+
+   console.log(categories);
    
     return(
-       <div>
-           <h1>Restaurants Menu</h1>
-           <h2>{name}</h2>
-           <p>{cuisines.join(", ")}  - {costForTwoMessage} </p>
+       <div className="text-center">
+           <h2 className="font-bold my-6 text-2xl">{name}</h2>
+           <p className="font-bold text-lg">
+            {cuisines.join(", ")}  - {costForTwoMessage} 
+           </p>
+           {/* categories accordian */}
+           {categories.map((category)=>(
+           <RestaurantCategory key={category?.card?.card.title} 
+           data={category?.card?.card} />
+           ))}
            
-           <h2>Menu</h2>
-           <ul>
-            {itemCards.map(item => 
-            <li key={item.card.info.id}>
-               {item.card.info.name} - {"Rs."} {item.card.info.price/100 || item.card.info.defaultPrice/100 }
-            </li>)}
-               {/* <li>{itemCards[0].card.info.name}</li> */}
-           </ul>
        </div>
       )
    }
    export default RestaurantMenu;
 
 
+
+
+
+
+
+//    return(
+//       <div>
+//           <h1>Restaurants Menu</h1>
+//           <h2>{name}</h2>
+//           <p>{cuisines.join(", ")}  - {costForTwoMessage} </p>
+          
+//           <h2>Menu</h2>
+//           <ul>
+//            {itemCards.map(item => 
+//            <li key={item.card.info.id}>
+//               {item.card.info.name} - {"Rs."} {item.card.info.price/100 || item.card.info.defaultPrice/100 }
+//            </li>)}
+//               {/* <li>{itemCards[0].card.info.name}</li> */}
+//           </ul>
+//       </div>
+//      )
+//   }
+//   export default RestaurantMenu;
 
 
 // const RestaurantMenu = () => {
