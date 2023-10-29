@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
    const resInfo = useRestaurantMenu(resId);
    //for this particular resId restaurant menu data should come while we fetching data using useRestaurantMenu Hook
    
-   
+   const[showIndex ,setShowIndex]=useState(0);
    
    if(resInfo === null) return <Shimmer/>;
    
@@ -37,9 +37,15 @@ const RestaurantMenu = () => {
             {cuisines.join(", ")}  - {costForTwoMessage} 
            </p>
            {/* categories accordian */}
-           {categories.map((category)=>(
-           <RestaurantCategory key={category?.card?.card.title} 
-           data={category?.card?.card} />
+           {categories.map((category,index)=>(
+
+            //controlled component
+           <RestaurantCategory
+            key={category?.card?.card.title} 
+           data={category?.card?.card}
+           showItems={index === showIndex ? true : false}
+           setShowIndex={()=>{setShowIndex(index)}}
+            />
            ))}
            
        </div>
