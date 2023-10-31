@@ -13,6 +13,9 @@ const RestaurantMenu = () => {
    //for this particular resId restaurant menu data should come while we fetching data using useRestaurantMenu Hook
    
    const[showIndex ,setShowIndex]=useState(0);
+
+   //to collapse all when we load page we need to pass null
+   //const[showIndex ,setShowIndex]=useState(null);
    
    if(resInfo === null) return <Shimmer/>;
    
