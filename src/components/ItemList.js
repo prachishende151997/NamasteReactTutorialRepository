@@ -1,6 +1,17 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({items})=>{
+
+     const dispatch = useDispatch();
+
+     const handleAddItem = (item)=>{
+        //code to add item in cart
+        //dispatch an action we need to use hook useDispatch
+        dispatch(addItem(item)) //whtever we pass inside add item will go inside cart  which is action.payload
+     }
+
     console.log(items);
     return(
         <div>
@@ -23,7 +34,9 @@ const ItemList = ({items})=>{
 
                 <div className="w-3/12 p-4">
                    <div className="absolute">
-                    <button className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg "> 
+                    <button className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg "
+                    onClick={()=>handleAddItem(item)}
+                    > 
                     Add + 
                     </button>
                    </div>
